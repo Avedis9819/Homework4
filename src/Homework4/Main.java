@@ -8,6 +8,7 @@ public class Main {
         SequentialPlayer p1 = new SequentialPlayer();
         SequentialPlayer p2 = new SequentialPlayer();
 
+        HumanPlayer h1 = new HumanPlayer();
 
     }
 }
