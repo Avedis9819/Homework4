@@ -8,9 +8,10 @@ public class RandomPlayer extends Player {
         super();
     }
 
-    public void guessImpl() {
+    public int guessImpl() {
         Random r = new Random();
-        this.randomNumber = r.nextInt(12);
+        return this.randomNumber = r.nextInt(12);
+
     }
 
     public String toString() {

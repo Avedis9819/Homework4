@@ -2,21 +2,7 @@ package Homework4;
 
 public abstract class Player {
 
-    protected enum GuessedNumberIs {
-        LARGER("Larger"),
-        SMALLER("Smaller"),
-        CORRECT("Correct");
-
-        private String numberCase;
-
-        GuessedNumberIs(String numberCase) {
-            this.numberCase = numberCase;
-        }
-
-        public String getNumberCase() {
-            return numberCase;
-        }
-    }
+    protected enum GuessedNumberIs { LARGER, SMALLER, CORRECT}
 
     private int numberOfGuesses;
 
@@ -29,13 +15,16 @@ public abstract class Player {
         numberOfGuesses++;
     }
 
-    public abstract void guessImpl();
+    public abstract int guessImpl();
 
     /**
      * ReceiveFeedback method is an empty method that gets overridden by the subclasses
      * */
-    public void receiveFeedback(int guessNumber, int diceRoll) { }
+    public void receiveFeedback(GuessedNumberIs g) { }
 
+    public int getNumberOfGuesses() {
+        return numberOfGuesses;
+    }
 
     public String toString() {
         return numberOfGuesses + " number of guesses.";

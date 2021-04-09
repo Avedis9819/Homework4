@@ -13,14 +13,12 @@ public class HumanPlayer extends Player {
     }
 
     @Override
-    public void guessImpl() {
-        boolean condition = true;
+    public int guessImpl() {
 
-        while (condition) {
+        while (true) {
             System.out.println("Please insert your guess: ");
             try {
-                int userGuess = input.nextInt();
-                condition = false;
+                return input.nextInt();
 
             } catch (InputMismatchException e) {
                 System.out.println("Please insert a number only.");
@@ -32,15 +30,16 @@ public class HumanPlayer extends Player {
     }
 
     @Override
-    public void receiveFeedback(int playerGuess, int currDiceRoll) {
-        if(playerGuess > currDiceRoll) {
-            System.out.println(GuessedNumberIs.LARGER);
+    public void receiveFeedback(GuessedNumberIs g) {
+
+        if(g.equals(GuessedNumberIs.LARGER)) {
+            System.out.println("Your guess is larger. Try again!");
         }
-        else if (playerGuess < currDiceRoll) {
-            System.out.println(GuessedNumberIs.SMALLER);
+        else if(g.equals(GuessedNumberIs.SMALLER)) {
+            System.out.println("Your guess is smaller. Try again!");
         }
         else {
-            System.out.println(GuessedNumberIs.CORRECT);
+            System.out.println("Your guess is correct!");
         }
     }
 

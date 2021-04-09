@@ -8,8 +8,10 @@ public class SequentialPlayer extends Player {
         this.previousGuess = 0;
     }
 
-    public void guessImpl() {
-
+    public int guessImpl() {
+        int currGuess = this.previousGuess++;
+        this.previousGuess = currGuess;
+        return currGuess;
     }
 
     public String toString() {

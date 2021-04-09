@@ -4,39 +4,58 @@ import java.util.*;
 public class Game {
 
     private static int upperLimitValue = 12;
-    private Player player;
+    private static Player player;
 
     public Game () {
-        this.player = new HumanPlayer();
+        player = new HumanPlayer();
     }
 
     public Game(char letter) throws GameInitializationException {
 
         switch (letter) {
             case 'h':
-                this.player = new HumanPlayer();
+                player = new HumanPlayer();
                 break;
             case 'r':
-                this.player = new RandomPlayer();
+                player = new RandomPlayer();
                 break;
             case 's':
-                this.player = new SequentialPlayer();
+                player = new SequentialPlayer();
                 break;
             case 'b':
-                this.player = new BinarySearchPlayer();
+                player = new BinarySearchPlayer();
                 break;
             default:
                 throw new GameInitializationException("Please use the corresponding letters only!");
         }
     }
 
+    public Game(Player player) {
+        //TODO figure out the privcay leak issue
+        this.player = player;
+    }
+
     public static void play() {
-        boolean condition = true;
         int currDiceRoll = diceRoll();
+        //declaring the variable g as type of GuessedNumberIs
 
-        while(condition) {
+        Player.GuessedNumberIs g;
 
+        while(true) {
+            int currGuess = player.guessImpl();
 
+            if(currGuess < currDiceRoll) {
+                g = Player.GuessedNumberIs.SMALLER;
+                player.receiveFeedback(g);
+            }
+            else if(currGuess > currDiceRoll) {
+                g = Player.GuessedNumberIs.LARGER;
+                player.receiveFeedback(g);
+            }
+            else {
+                g = Player.GuessedNumberIs.CORRECT;
+                break;
+            }
         }
     }
 

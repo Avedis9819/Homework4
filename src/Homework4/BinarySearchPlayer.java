@@ -2,31 +2,39 @@ package Homework4;
 
 public class BinarySearchPlayer extends Player{
 
-    private int[] lowEnds;
-    private int[] highEnds;
+    private int lowEnd;
+    private int highEnd;
 
     public BinarySearchPlayer() {
-        this.lowEnds = new int[] {2 ,3, 4, 5};
-        this.highEnds = new int[] {7, 8, 9, 10, 11, 12};
+        this.lowEnd = 1;
+        this.highEnd = 12;
     }
 
     @Override
     //TODO the guess method for binary player
-    public void guessImpl(int diceRoll) {
-        int currNumber = Game.getUpperLimitValue()/2;
-
-        if(currNumber > diceRoll) {
-            currNumber = currNumber - (currNumber/2);
+    public int guessImpl() {
+        if(getNumberOfGuesses() == 0) {
+            return 6;
         }
-        else if(currNumber < diceRoll) {
-            currNumber = currNumber + (currNumber/2);
+        else {
+            return (lowEnd + highEnd)/2;
+        }
+    }
+
+    @Override
+    public void receiveFeedback(GuessedNumberIs g) {
+        if(g.equals(GuessedNumberIs.LARGER)) {
+            this.highEnd = (lowEnd + highEnd) / 2 - 1;
+        }
+        else if(g.equals(GuessedNumberIs.SMALLER)) {
+            this.lowEnd = (lowEnd + highEnd) / 2 - 1;
         }
         else {
 
         }
     }
 
-        public String toString() {
+    public String toString() {
         return "The Binary Search Player has " + super.toString();
     }
 }
