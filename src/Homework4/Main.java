@@ -9,6 +9,6 @@ public class Main {
         SequentialPlayer p2 = new SequentialPlayer();
 
         HumanPlayer h1 = new HumanPlayer();
-
+        Player b1 = new BinarySearchPlayer();
     }
 }
