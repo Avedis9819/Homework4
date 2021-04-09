@@ -10,9 +10,9 @@ public abstract class Player {
         numberOfGuesses = 0;
     }
 
-    public void guess() {
-        guessImpl();
+    public int guess() {
         numberOfGuesses++;
+        return guessImpl();
     }
 
     public abstract int guessImpl();

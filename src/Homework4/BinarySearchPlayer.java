@@ -27,7 +27,7 @@ public class BinarySearchPlayer extends Player{
             this.highEnd = (lowEnd + highEnd) / 2 - 1;
         }
         else if(g.equals(GuessedNumberIs.SMALLER)) {
-            this.lowEnd = (lowEnd + highEnd) / 2 - 1;
+            this.lowEnd = (lowEnd + highEnd) / 2 + 1;
         }
         else {
 

@@ -35,25 +35,24 @@ public class Game {
         this.player = player;
     }
 
-    public static void play() {
+    public void play() {
         int currDiceRoll = diceRoll();
         //declaring the variable g as type of GuessedNumberIs
 
-        Player.GuessedNumberIs g;
 
         while(true) {
-            int currGuess = player.guessImpl();
+            int currGuess = player.guess();
 
             if(currGuess < currDiceRoll) {
-                g = Player.GuessedNumberIs.SMALLER;
-                player.receiveFeedback(g);
+                System.out.println("Your Guess is smaller");
+                player.receiveFeedback(Player.GuessedNumberIs.SMALLER);
             }
             else if(currGuess > currDiceRoll) {
-                g = Player.GuessedNumberIs.LARGER;
-                player.receiveFeedback(g);
+                System.out.println("Your guess is larger");
+                player.receiveFeedback(Player.GuessedNumberIs.LARGER);
             }
             else {
-                g = Player.GuessedNumberIs.CORRECT;
+                System.out.println("Your guess is correct! It's " + currGuess);
                 break;
             }
         }

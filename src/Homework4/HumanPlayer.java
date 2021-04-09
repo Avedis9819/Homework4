@@ -20,10 +20,12 @@ public class HumanPlayer extends Player {
             try {
                 return input.nextInt();
 
-            } catch (InputMismatchException e) {
+            }
+            catch (InputMismatchException e) {
                 System.out.println("Please insert a number only.");
 
-            } catch (ArrayIndexOutOfBoundsException e) {
+            }
+            catch (ArrayIndexOutOfBoundsException e) {
                 System.out.println("Your guessed number is out of the range please try again");
             }
         }
