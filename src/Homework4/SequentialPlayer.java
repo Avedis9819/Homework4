@@ -9,8 +9,7 @@ public class SequentialPlayer extends Player {
     }
 
     public int guessImpl() {
-        int currGuess = this.previousGuess++;
-        this.previousGuess = currGuess;
+        int currGuess = ++this.previousGuess;
         return currGuess;
     }
 

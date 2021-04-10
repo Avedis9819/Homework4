@@ -5,9 +5,9 @@ import java.lang.Exception;
 public class GameplayDemo {
 
     public static void main(String[] args) {
-        Game g1 = new Game();
-
+//        Game g1 = new Game();
         Game g2;
+
         while(true) {
             Scanner input = new Scanner(System.in);
 
@@ -18,16 +18,13 @@ public class GameplayDemo {
                 g2 = new Game(letter);
                 break;
             }
-            catch (InputMismatchException e) {
-                System.out.println("Please insert a letter only");
-            }
             catch (GameInitializationException e) {
                 System.out.println("Please insert one of the correct letters!");
             }
 
 
         }
-            g1.play();
+//            g1.play();
             g2.play();
     }
 }

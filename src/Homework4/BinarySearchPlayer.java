@@ -30,7 +30,7 @@ public class BinarySearchPlayer extends Player{
             this.lowEnd = (lowEnd + highEnd) / 2 + 1;
         }
         else {
-
+            this.lowEnd = lowEnd + highEnd;
         }
     }
 
