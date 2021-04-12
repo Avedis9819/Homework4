@@ -3,14 +3,18 @@ package Homework4;
 public class SequentialPlayer extends Player {
     private int previousGuess;
 
+    //Constructor for the Sequential Player
     public SequentialPlayer() {
         super();
         this.previousGuess = 0;
     }
 
-    public int guessImpl() {
-        int currGuess = ++this.previousGuess;
-        return currGuess;
+    //The method that generates the guess sequentially, and can throw an exception if the guessed an invalid guess.
+    public int guessImpl() throws GameplayException {
+        if(previousGuess >= 13 ) {
+            throw new GameplayException();
+        }
+        return this.previousGuess++;
     }
 
     public String toString() {
